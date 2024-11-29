@@ -6,7 +6,7 @@
 /*   By: abouclie <abouclie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:23:47 by abouclie          #+#    #+#             */
-/*   Updated: 2024/11/29 14:50:42 by abouclie         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:07:39 by abouclie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,9 @@ char	*ft_itoa_base(long int n, char *base)
 	int			i;
 	int			size;
 	int			bsize;
-	// long int	nbr;
 	char		*str;
 
 	i = 0;
-	// nbr = n;
 	bsize = ft_strlen(base);
 	size = ft_intlen(n, bsize);
 	str = malloc((size + 1) * sizeof(char));
