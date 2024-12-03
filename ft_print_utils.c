@@ -6,12 +6,11 @@
 /*   By: abouclie <abouclie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 09:50:42 by abouclie          #+#    #+#             */
-/*   Updated: 2024/11/29 14:51:28 by abouclie         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:28:54 by abouclie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 void	ft_putstr(char *str)
 {
@@ -25,7 +24,7 @@ void	ft_putstr(char *str)
 	}
 }
 
-int	ft_printstr (char *str)
+int	ft_printstr(char *str)
 {
 	int	i;
 
@@ -40,13 +39,17 @@ int	ft_printstr (char *str)
 		write(1, &str[i], 1);
 		i++;
 	}
-	return(i);
+	return (i);
 }
 
-int	ft_printnbr (long int n, char *base)
+int	ft_printnbr(long int n, char *base)
 {
 	char	*nb;
+	int		len;
 
+	len = 0;
 	nb = ft_itoa_base(n, base);
-	return (ft_printstr(nb));
+	len = ft_printstr(nb);
+	free(nb);
+	return (len);
 }
