@@ -70,8 +70,8 @@ int main() {
 
     // Test d'une chaîne contenant des caractères spéciaux (comme des sauts de ligne)
     char *str_with_special_chars = "Hello\nWorld\t!";
-    printf("Test de %%s avec printf (chaîne avec caractères spéciaux) :\n\033[34;1m'%s'\033[0m\n", str_with_special_chars);
-    ft_printf("Test de %%s avec ft_printf (chaîne avec caractères spéciaux) :\n\033[34;1m'%s'\033[0m\n", str_with_special_chars);
+    printf("Test de %%s avec printf (chaîne avec caractères spéciaux) :\n                                                                \033[34;1m'%s'\033[0m\n", str_with_special_chars);
+    ft_printf("Test de %%s avec ft_printf (chaîne avec caractères spéciaux) :\n                                                                \033[34;1m'%s'\033[0m\n", str_with_special_chars);
 
     // Test d'une chaîne avec un seul caractère
     char *single_char_str = "A";
@@ -274,6 +274,50 @@ int main() {
     MyStruct *struct_ptr = &my_struct;
     printf("Test de %%p avec printf (pointeur vers structure) :              \033[34;1m%p\033[0m\n", struct_ptr);
     ft_printf("Test de %%p avec ft_printf (pointeur vers structure) :           \033[34;1m%p\033[0m\n", struct_ptr);
+
+    // 1. Test de plusieurs %c et %s dans une même chaîne
+    printf("\n\033[31m-----------Test plusieurs %%c et %%s-----------\033[0m\n");
+    printf("Test de %%c et %%s avec printf :                                  \033[34;1m'Character: %c, String: %s'\033[0m\n", c, str);
+    ft_printf("Test de %%c et %%s avec ft_printf :                               \033[34;1m'Character: %c, String: %s'\033[0m\n", c, str);
+
+    // 2. Test de %d et %i avec des valeurs
+    int num_d = -42;
+    int num_i = 123;
+    printf("\n\033[31m-----------Test plusieurs %%d et %%i-----------\033[0m\n");
+    printf("Test de %%d et %%i avec printf :                                  \033[34;1m'Value d: %d, Value i: %i'\033[0m\n", num_d, num_i);
+    ft_printf("Test de %%d et %%i avec ft_printf :                               \033[34;1m'Value d: %d, Value i: %i'\033[0m\n", num_d, num_i);
+
+    // 3. Test de %u et %x (non signé et hexadécimal)
+    unsigned int num_uu = 255;
+    unsigned int num_x = 255;
+    printf("\n\033[31m-----------Test plusieurs %%u et %%x-----------\033[0m\n");
+    printf("Test de %%u et %%x avec printf :                                  \033[34;1m'Unsigned: %u, Hex: %x'\033[0m\n", num_uu, num_x);
+    ft_printf("Test de %%u et %%x avec ft_printf :                               \033[34;1m'Unsigned: %u, Hex: %x'\033[0m\n", num_uu, num_x);
+
+    // 4. Test de %X (hexadécimal en majuscules) et %p (pointeur)
+    unsigned int num_X = 255;
+    void *ptr3 = (void *)12345;
+    printf("\n\033[31m-----------Test plusieurs %%X et %%p-----------\033[0m\n");
+    printf("Test de %%X et %%p avec printf :                                  \033[34;1m'Hex uppercase: %X, Pointer: %p'\033[0m\n", num_X, ptr3);
+    ft_printf("Test de %%X et %%p avec ft_printf :                               \033[34;1m'Hex uppercase: %X, Pointer: %p'\033[0m\n", num_X, ptr3);
+
+    // 5. Test de %% (affichage du caractère %)
+    printf("\n\033[31m-----------Test plusieurs %%-----------\033[0m\n");
+    printf("Test de %% avec printf :                                         \033[34;1m'Show percent: %%'\033[0m\n");
+    ft_printf("Test de %% avec ft_printf :                                      \033[34;1m'Show percent: %%'\033[0m\n");
+
+    // 6. Test avec tous les formats ensemble dans une seule chaîne
+    char c1 = 'B';
+    char *str2 = "World";
+    int num2 = 456;
+    unsigned int num3 = 789;
+    unsigned int num4 = 255;
+    void *ptr2 = (void *)0xABC;
+    printf("\n\033[31m-----------Test avec tous les formats dans une chaîne-----------\033[0m\n");
+    printf("Test de tous les formats avec printf :                          \033[34;1m'Character: %c, String: %s, Signed: %d, Unsigned:                                                                %u, Hex: %x, Hex Upper: %X, Pointer: %p, Percent                                                                : %%'\033[0m\n",
+           c1, str2, num2, num3, num4, num4, ptr2);
+    ft_printf("Test de tous les formats avec ft_printf :                       \033[34;1m'Character: %c, String: %s, Signed: %d, Unsigned:                                                                %u, Hex: %x, Hex Upper: %X, Pointer: %p, Percent                                                                : %%'\033[0m\n",
+              c1, str2, num2, num3, num4, num4, ptr2);
 
     return 0;
 }
